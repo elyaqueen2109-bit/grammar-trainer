@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First vs Second Conditional – English Quiz</title>
+    <style>
+        :root {
+            --bg-start: #e8f0fe;
+            --bg-end: #f3e8ff;
+            --card-bg: #ffffff;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --accent: #5b6af0;
+            --accent-hover: #4a56d4;
+            --correct: #2ecc71;
+            --correct-bg: #eafaf1;
+            --incorrect: #e74c3c;
+            --incorrect-bg: #fdedec;
+            --btn-option-bg: #f5f6fa;
+            --btn-option-hover: #e8eaf6;
+            --btn-option-border: #d5d8e8;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+            --font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            --transition: 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background: linear-gradient(145deg, #e0e8f8 0%, #ede4f5 30%, #f5e8f0 60%, #e8f0fe 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #5b6af0 0%, #7c5ce7 50%, #9b59b6 100%);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            text-align: center;
+            color: #fff;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        }
+        .header .subtitle {
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            margin-top: 2px;
+        }
+
+        /* Timer */
+        .timer-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #fff;
+            border-radius: var(--radius-md);
+            padding: 10px 18px;
+            box-shadow: var(--shadow);
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+        .timer-bar.warning {
+            color: #e67e22;
+            animation: pulse-warning 0.8s ease-in-out infinite;
+        }
+        .timer-bar.danger {
+            color: #e74c3c;
+            animation: pulse-danger 0.5s ease-in-out infinite;
+        }
+        @keyframes pulse-warning {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.04);
+            }
+        }
+        @keyframes pulse-danger {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.06);
+            }
+        }
+        .timer-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Card */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 24px 22px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* Rules section */
+        .rules-section {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .rules-toggle {
+            width: 100%;
+            padding: 14px 20px;
+            background: #fafbfd;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-stack);
+            letter-spacing: -0.2px;
+            transition: var(--transition);
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .rules-toggle:hover {
+            background: #f0f2f8;
+        }
+        .rules-toggle .arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+        }
+        .rules-section.open .rules-toggle .arrow {
+            transform: rotate(180deg);
+        }
+        .rules-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+        .rules-section.open .rules-content {
+            max-height: 800px;
+            padding: 0 20px 18px;
+        }
+        .rules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        @media (max-width: 500px) {
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .rule-block {
+            background: #f9fafc;
+            border-radius: var(--radius-sm);
+            padding: 14px 14px;
+            border: 1px solid #eef0f6;
+        }
+        .rule-block h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 6px;
+            letter-spacing: -0.2px;
+        }
+        .rule-block .formula {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 3px;
+            font-weight: 500;
+        }
+        .rule-block .formula span.label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.75rem;
+            display: inline-block;
+            min-width: 28px;
+        }
+
+        /* Sentence area */
+        .sentence-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .sentence-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.5;
+            flex: 1;
+            letter-spacing: -0.2px;
+        }
+        @media (max-width: 400px) {
+            .sentence-text {
+                font-size: 1.05rem;
+            }
+        }
+        .btn-listen {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid #e0e3f0;
+            background: #fff;
+            cursor: pointer;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: #5b6af0;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .btn-listen:hover {
+            background: #f5f6ff;
+            border-color: #c5c9f0;
+        }
+        .btn-listen:active {
+            background: #eef0ff;
+            transform: scale(0.94);
+        }
+        .btn-listen.playing {
+            background: #eef0ff;
+            border-color: #5b6af0;
+            animation: listen-pulse 0.6s ease-in-out infinite;
+        }
+        @keyframes listen-pulse {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(91, 106, 240, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 0 12px rgba(91, 106, 240, 0);
+            }
+        }
+
+        /* Options */
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .btn-option {
+            display: block;
+            width: 100%;
+            padding: 15px 18px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-stack);
+            border: 2px solid var(--btn-option-border);
+            border-radius: var(--radius-md);
+            background: var(--btn-option-bg);
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+            color: var(--text-primary);
+            min-height: 50px;
+            letter-spacing: -0.2px;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            position: relative;
+        }
+        .btn-option:hover {
+            background: var(--btn-option-hover);
+            border-color: #bcc0d8;
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-1px);
+        }
+        .btn-option:active {
+            transform: scale(0.98);
+            transition: 0.08s ease;
+        }
+        .btn-option.selected {
+            border-color: var(--accent);
+            background: #eef0ff;
+            box-shadow: 0 0 0 3px rgba(91, 106, 240, 0.12);
+        }
+        .btn-option.correct-highlight {
+            border-color: var(--correct) !important;
+            background: var(--correct-bg) !important;
+            box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.14) !important;
+            color: #1a6b3a !important;
+        }
+        .btn-option.incorrect-highlight {
+            border-color: var(--incorrect) !important;
+            background: var(--incorrect-bg) !important;
+            box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.14) !important;
+            color: #922b21 !important;
+        }
+        .btn-option:disabled {
+            pointer-events: none;
+            opacity: 0.85;
+        }
+
+        /* Feedback */
+        .feedback {
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
+            line-height: 1.45;
+            letter-spacing: -0.1px;
+            display: none;
+            animation: fadeIn 0.25s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .feedback.show {
+            display: block;
+        }
+        .feedback.correct {
+            background: var(--correct-bg);
+            color: #1a6b3a;
+            border: 1px solid #c8f0d8;
+        }
+        .feedback.incorrect {
+            background: var(--incorrect-bg);
+            color: #922b21;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Buttons row */
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            flex: 1;
+            min-width: 100px;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: var(--font-stack);
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: -0.2px;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            min-height: 48px;
+        }
+        .btn-check {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-check:hover {
+            background: var(--accent-hover);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-1px);
+        }
+        .btn-check:disabled {
+            background: #c5c9e0;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+        .btn-next {
+            background: #fff;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        .btn-next:hover {
+            background: #f5f6ff;
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-1px);
+        }
+        .btn-next:disabled {
+            border-color: #d5d8e8;
+            color: #b0b5c8;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+            background: #fafbfd;
+        }
+
+        /* Progress */
+        .progress-text {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8a8ea0;
+            font-weight: 500;
+            letter-spacing: -0.1px;
+        }
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+            flex-wrap: wrap;
+        }
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #dde0ed;
+            transition: var(--transition);
+        }
+        .progress-dot.done-correct {
+            background: var(--correct);
+        }
+        .progress-dot.done-incorrect {
+            background: var(--incorrect);
+        }
+        .progress-dot.current {
+            background: var(--accent);
+            box-shadow: 0 0 0 5px rgba(91, 106, 240, 0.18);
+            transform: scale(1.25);
+        }
+
+        /* Start screen */
+        .start-screen {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+        .start-screen .card {
+            align-items: center;
+            gap: 14px;
+        }
+        .btn-start {
+            padding: 16px 40px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            font-family: var(--font-stack);
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #5b6af0, #7c5ce7);
+            color: #fff;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: -0.2px;
+            min-height: 52px;
+            box-shadow: 0 6px 20px rgba(91, 106, 240, 0.3);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-start:hover {
+            box-shadow: 0 10px 28px rgba(91, 106, 240, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-start:active {
+            transform: scale(0.96);
+        }
+
+        /* Result screen */
+        .result-screen {
+            text-align: center;
+        }
+        .result-screen .card {
+            align-items: center;
+            gap: 12px;
+        }
+        .result-score {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -1px;
+        }
+        .result-detail {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .result-time {
+            font-size: 0.95rem;
+            color: #8a8ea0;
+            font-weight: 500;
+        }
+        .btn-restart {
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: var(--font-stack);
+            border: none;
+            border-radius: 50px;
+            background: var(--accent);
+            color: #fff;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: -0.2px;
+            min-height: 48px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-restart:hover {
+            background: var(--accent-hover);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-1px);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 380px) {
+            .card {
+                padding: 18px 14px;
+                gap: 14px;
+            }
+            .btn-option {
+                padding: 13px 14px;
+                font-size: 0.95rem;
+                min-height: 46px;
+            }
+            .btn-primary {
+                padding: 12px 16px;
+                font-size: 0.95rem;
+                min-height: 44px;
+            }
+            .header h1 {
+                font-size: 1.35rem;
+            }
+            .sentence-text {
+                font-size: 1rem;
+            }
+            .btn-listen {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="appContainer">
+        <!-- Header -->
+        <div class="header">
+            <h1>First vs Second Conditional</h1>
+            <div class="subtitle">English Grammar Quiz</div>
+        </div>
+
+        <!-- Timer (hidden until quiz starts) -->
+        <div class="timer-bar hidden" id="timerBar">
+            <span class="timer-icon">⏱</span>
+            <span id="timerDisplay">05:00</span>
+        </div>
+
+        <!-- Rules Section -->
+        <div class="rules-section open" id="rulesSection">
+            <button class="rules-toggle" id="rulesToggle" aria-label="Toggle rules">
+                📘 Grammar Rules
+                <span class="arrow">▾</span>
+            </button>
+            <div class="rules-content">
+                <div class="rules-grid">
+                    <div class="rule-block">
+                        <h4>First Conditional</h4>
+                        <div class="formula"><span class="label">(+)</span> If + Present Simple, will / might / could + V₁</div>
+                        <div class="formula"><span class="label">(−)</span> If + Present Simple, won't / might not + V₁</div>
+                        <div class="formula"><span class="label">(?)</span> If + Present Simple, will + subject + V₁?</div>
+                        <div style="font-size:0.75rem;color:#888;margin-top:4px;">Real / possible future</div>
+                    </div>
+                    <div class="rule-block">
+                        <h4>Second Conditional</h4>
+                        <div class="formula"><span class="label">(+)</span> If + Past Simple, would / could / might + V₁</div>
+                        <div class="formula"><span class="label">(−)</span> If + Past Simple, wouldn't / couldn't + V₁</div>
+                        <div class="formula"><span class="label">(?)</span> If + Past Simple, would + subject + V₁?</div>
+                        <div style="font-size:0.75rem;color:#888;margin-top:4px;">Unreal / imaginary</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Card -->
+        <div class="card" id="mainCard">
+            <!-- Start Screen -->
+            <div class="start-screen" id="startScreen">
+                <p style="font-size:1rem;color:var(--text-secondary);font-weight:500;">
+                    Test your knowledge of <strong>First</strong> and <strong>Second</strong> Conditionals.
+                </p>
+                <p style="font-size:0.9rem;color:#8a8ea0;">
+                    10 questions · 5 minutes · Instant feedback
+                </p>
+                <button class="btn-start" id="btnStart">Start Quiz</button>
+            </div>
+
+            <!-- Quiz Screen (hidden initially) -->
+            <div class="hidden" id="quizScreen">
+                <div class="sentence-wrapper">
+                    <span class="sentence-text" id="sentenceText"></span>
+                    <button class="btn-listen" id="btnListen" title="Listen to the sentence" aria-label="Listen">🔊</button>
+                </div>
+                <div class="options-container" id="optionsContainer"></div>
+                <div class="feedback" id="feedbackBox"></div>
+                <div class="btn-row">
+                    <button class="btn-primary btn-check" id="btnCheck">Check</button>
+                    <button class="btn-primary btn-next" id="btnNext" disabled>Next →</button>
+                </div>
+                <div class="progress-dots" id="progressDots"></div>
+                <div class="progress-text" id="progressText"></div>
+            </div>
+
+            <!-- Result Screen (hidden initially) -->
+            <div class="result-screen hidden" id="resultScreen">
+                <div style="font-size:1.1rem;font-weight:600;color:var(--text-primary);">Quiz Complete!</div>
+                <div class="result-score" id="resultScore"></div>
+                <div class="result-detail" id="resultDetail"></div>
+                <div class="result-time" id="resultTime"></div>
+                <button class="btn-restart" id="btnRestart">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ──────────────────────────────────────
+            // Quiz Data
+            // ──────────────────────────────────────
+            const questionsRaw = [{
+                id: 1,
+                sentenceTemplate: 'If I ___ a friend, I ___ hello.',
+                correctPair: 'see / will say',
+                wrongPair: 'saw / would say',
+                explanation: 'First Conditional — real future situation, "will" for certainty.',
+                audioText: 'If I see a friend, I will say hello.',
+            }, {
+                id: 2,
+                sentenceTemplate: 'If I ___ a superpower, I ___ fly.',
+                correctPair: 'had / would fly',
+                wrongPair: 'have / will fly',
+                explanation: 'Second Conditional — unreal situation, "would".',
+                audioText: 'If I had a superpower, I would fly.',
+            }, {
+                id: 3,
+                sentenceTemplate: 'If she ___ hard, she ___ pass the exam.',
+                correctPair: 'studies / might pass',
+                wrongPair: 'studied / would pass',
+                explanation: 'First Conditional — "might" shows less certainty.',
+                audioText: 'If she studies hard, she might pass the exam.',
+            }, {
+                id: 4,
+                sentenceTemplate: 'If I ___ you, I ___ apologise.',
+                correctPair: 'were / would apologise',
+                wrongPair: 'am / will apologise',
+                explanation: 'Second Conditional — unreal advice, "if I were you".',
+                audioText: 'If I were you, I would apologise.',
+            }, {
+                id: 5,
+                sentenceTemplate: 'If it ___ tomorrow, we ___ cancel the picnic.',
+                correctPair: 'rains / will cancel',
+                wrongPair: 'rained / would cancel',
+                explanation: 'First Conditional — real future condition.',
+                audioText: 'If it rains tomorrow, we will cancel the picnic.',
+            }, {
+                id: 6,
+                sentenceTemplate: 'If I ___ in New York, I ___ visit Central Park every day.',
+                correctPair: 'lived / would visit',
+                wrongPair: 'live / will visit',
+                explanation: 'Second Conditional — imaginary situation.',
+                audioText: 'If I lived in New York, I would visit Central Park every day.',
+            }, {
+                id: 7,
+                sentenceTemplate: 'If you ___ hurry, you ___ miss the bus.',
+                correctPair: "don't / will miss",
+                wrongPair: "didn't / would miss",
+                explanation: 'First Conditional — real warning.',
+                audioText: "If you don't hurry, you will miss the bus.",
+            }, {
+                id: 8,
+                sentenceTemplate: 'If I ___ speak any language, I ___ choose Japanese.',
+                correctPair: 'could / would choose',
+                wrongPair: 'can / will choose',
+                explanation: 'Second Conditional — unreal wish, "could" for ability.',
+                audioText: 'If I could speak any language, I would choose Japanese.',
+            }, {
+                id: 9,
+                sentenceTemplate: 'If the weather ___ good, we ___ go to the beach.',
+                correctPair: 'is / might go',
+                wrongPair: 'was / would go',
+                explanation: 'First Conditional — real possibility, "might".',
+                audioText: 'If the weather is good, we might go to the beach.',
+            }, {
+                id: 10,
+                sentenceTemplate: 'If I ___ a million dollars, I ___ travel around the world.',
+                correctPair: 'had / would travel',
+                wrongPair: 'have / will travel',
+                explanation: 'Second Conditional — unreal dream.',
+                audioText: 'If I had a million dollars, I would travel around the world.',
+            }];
+
+            // ──────────────────────────────────────
+            // Utility: Fisher-Yates shuffle
+            // ──────────────────────────────────────
+            function shuffle(arr) {
+                const a = arr.slice();
+                for (let i = a.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [a[i], a[j]] = [a[j], a[i]];
+                }
+                return a;
+            }
+
+            // ──────────────────────────────────────
+            // State
+            // ──────────────────────────────────────
+            const TOTAL_TIME = 300; // 5 minutes in seconds
+            let questions = [];
+            let questionStates = []; // { selectedOptionIndex: null|number, checked: bool, isCorrect: bool|null, optionOrder: [correctFirst:bool] }
+            let currentIndex = 0;
+            let timeLeft = TOTAL_TIME;
+            let timerInterval = null;
+            let quizActive = false;
+            let quizFinished = false;
+
+            // ──────────────────────────────────────
+            // DOM refs
+            // ──────────────────────────────────────
+            const $timerBar = document.getElementById('timerBar');
+            const $timerDisplay = document.getElementById('timerDisplay');
+            const $rulesSection = document.getElementById('rulesSection');
+            const $rulesToggle = document.getElementById('rulesToggle');
+            const $startScreen = document.getElementById('startScreen');
+            const $quizScreen = document.getElementById('quizScreen');
+            const $resultScreen = document.getElementById('resultScreen');
+            const $sentenceText = document.getElementById('sentenceText');
+            const $optionsContainer = document.getElementById('optionsContainer');
+            const $feedbackBox = document.getElementById('feedbackBox');
+            const $btnCheck = document.getElementById('btnCheck');
+            const $btnNext = document.getElementById('btnNext');
+            const $btnListen = document.getElementById('btnListen');
+            const $progressDots = document.getElementById('progressDots');
+            const $progressText = document.getElementById('progressText');
+            const $btnStart = document.getElementById('btnStart');
+            const $btnRestart = document.getElementById('btnRestart');
+            const $resultScore = document.getElementById('resultScore');
+            const $resultDetail = document.getElementById('resultDetail');
+            const $resultTime = document.getElementById('resultTime');
+            const $mainCard = document.getElementById('mainCard');
+
+            // ──────────────────────────────────────
+            // Speech Synthesis
+            // ──────────────────────────────────────
+            let speechSynth = null;
+            let isSpeaking = false;
+
+            function initSpeech() {
+                if (!('speechSynthesis' in window)) return;
+                speechSynth = window.speechSynthesis;
+            }
+
+            function stopSpeech() {
+                if (speechSynth) {
+                    speechSynth.cancel();
+                }
+                isSpeaking = false;
+                $btnListen.classList.remove('playing');
+            }
+
+            function speakSentence(text) {
+                if (!speechSynth) {
+                    alert('Speech synthesis is not supported in your browser.');
+                    return;
+                }
+                stopSpeech();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.0;
+                // Try to pick a good English voice
+                const voices = speechSynth.getVoices();
+                const enVoice = voices.find(v => v.lang.startsWith('en-US') && v.name.includes('Female')) ||
+                    voices.find(v => v.lang.startsWith('en-US')) ||
+                    voices.find(v => v.lang.startsWith('en-GB')) ||
+                    voices.find(v => v.lang.startsWith('en'));
+                if (enVoice) utterance.voice = enVoice;
+
+                utterance.onstart = () => {
+                    isSpeaking = true;
+                    $btnListen.classList.add('playing');
+                };
+                utterance.onend = () => {
+                    isSpeaking = false;
+                    $btnListen.classList.remove('playing');
+                };
+                utterance.onerror = () => {
+                    isSpeaking = false;
+                    $btnListen.classList.remove('playing');
+                };
+                speechSynth.speak(utterance);
+            }
+
+            // Preload voices
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.getVoices();
+                window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
+            }
+
+            // ──────────────────────────────────────
+            // Timer
+            // ──────────────────────────────────────
+            function updateTimerDisplay() {
+                const mins = Math.floor(timeLeft / 60);
+                const secs = timeLeft % 60;
+                $timerDisplay.textContent = String(mins).padStart(2, '0') + ':' + String(secs).padStart(2,
+                '0');
+                $timerBar.classList.remove('warning', 'danger');
+                if (timeLeft <= 30 && timeLeft > 10) {
+                    $timerBar.classList.add('warning');
+                } else if (timeLeft <= 10) {
+                    $timerBar.classList.add('danger');
+                }
+            }
+
+            function startTimer() {
+                timeLeft = TOTAL_TIME;
+                updateTimerDisplay();
+                $timerBar.classList.remove('hidden', 'warning', 'danger');
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        timerInterval = null;
+                        finishQuiz(true);
+                    }
+                }, 1000);
+            }
+
+            function stopTimer() {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+            }
+
+            function getElapsedTime() {
+                return TOTAL_TIME - timeLeft;
+            }
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+            }
+
+            // ──────────────────────────────────────
+            // Quiz logic
+            // ──────────────────────────────────────
+            function initQuiz() {
+                questions = shuffle(questionsRaw);
+                questionStates = questions.map(() => ({
+                    selectedOptionIndex: null,
+                    checked: false,
+                    isCorrect: null,
+                    optionOrder: Math.random() < 0.5 ? 'correct-first' : 'wrong-first',
+                }));
+                currentIndex = 0;
+                quizActive = true;
+                quizFinished = false;
+                stopSpeech();
+            }
+
+            function getCurrentQuestion() {
+                return questions[currentIndex];
+            }
+
+            function getCurrentState() {
+                return questionStates[currentIndex];
+            }
+
+            function getOrderedOptions(question, state) {
+                const correct = question.correctPair;
+                const wrong = question.wrongPair;
+                if (state.optionOrder === 'correct-first') {
+                    return [
+                        { label: correct, isCorrect: true },
+                        { label: wrong, isCorrect: false },
+                    ];
+                } else {
+                    return [
+                        { label: wrong, isCorrect: false },
+                        { label: correct, isCorrect: true },
+                    ];
+                }
+            }
+
+            function renderQuiz() {
+                if (!quizActive || quizFinished) return;
+                const question = getCurrentQuestion();
+                const state = getCurrentState();
+                const options = getOrderedOptions(question, state);
+
+                // Sentence
+                $sentenceText.textContent = question.sentenceTemplate;
+
+                // Options
+                $optionsContainer.innerHTML = '';
+                options.forEach((opt, idx) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'btn-option';
+                    btn.textContent = opt.label;
+                    btn.setAttribute('data-option-index', idx);
+                    btn.addEventListener('click', () => onOptionSelect(idx));
+
+                    // If checked, apply highlights and disable
+                    if (state.checked) {
+                        btn.disabled = true;
+                        if (opt.isCorrect) {
+                            btn.classList.add('correct-highlight');
+                        }
+                        if (state.selectedOptionIndex === idx && !opt.isCorrect) {
+                            btn.classList.add('incorrect-highlight');
+                        }
+                    } else {
+                        // Show selection
+                        if (state.selectedOptionIndex === idx) {
+                            btn.classList.add('selected');
+                        }
+                    }
+                    $optionsContainer.appendChild(btn);
+                });
+
+                // Feedback
+                $feedbackBox.className = 'feedback';
+                $feedbackBox.classList.remove('show', 'correct', 'incorrect');
+                if (state.checked) {
+                    $feedbackBox.classList.add('show');
+                    if (state.isCorrect) {
+                        $feedbackBox.classList.add('correct');
+                        $feedbackBox.textContent = '✅ Correct! ' + question.explanation;
+                    } else {
+                        $feedbackBox.classList.add('incorrect');
+                        $feedbackBox.textContent = '❌ Incorrect. ' + question.explanation;
+                    }
+                } else {
+                    $feedbackBox.textContent = '';
+                }
+
+                // Buttons
+                $btnCheck.disabled = state.checked || state.selectedOptionIndex === null;
+                $btnNext.disabled = !state.checked;
+
+                // Progress dots
+                renderProgressDots();
+                $progressText.textContent = `Question ${currentIndex + 1} of ${questions.length}`;
+
+                // Ensure correct screen visibility
+                $startScreen.classList.add('hidden');
+                $quizScreen.classList.remove('hidden');
+                $resultScreen.classList.add('hidden');
+            }
+
+            function renderProgressDots() {
+                $progressDots.innerHTML = '';
+                questionStates.forEach((st, i) => {
+                    const dot = document.createElement('span');
+                    dot.className = 'progress-dot';
+                    if (i === currentIndex && !st.checked) {
+                        dot.classList.add('current');
+                    }
+                    if (st.checked && st.isCorrect) {
+                        dot.classList.add('done-correct');
+                    } else if (st.checked && !st.isCorrect) {
+                        dot.classList.add('done-incorrect');
+                    }
+                    dot.title = `Question ${i + 1}`;
+                    $progressDots.appendChild(dot);
+                });
+            }
+
+            function onOptionSelect(index) {
+                const state = getCurrentState();
+                if (state.checked) return; // locked
+                state.selectedOptionIndex = index;
+                renderQuiz();
+            }
+
+            function onCheck() {
+                const state = getCurrentState();
+                if (state.checked || state.selectedOptionIndex === null) return;
+                const question = getCurrentQuestion();
+                const options = getOrderedOptions(question, state);
+                const selectedOption = options[state.selectedOptionIndex];
+                state.isCorrect = selectedOption.isCorrect;
+                state.checked = true;
+                renderQuiz();
+                // If all answered, could auto-finish — but we wait for user to click Next or timer
+            }
+
+            function onNext() {
+                const state = getCurrentState();
+                if (!state.checked) return;
+                // Check if this was the last question
+                const allChecked = questionStates.every(s => s.checked);
+                if (allChecked && currentIndex === questions.length - 1) {
+                    finishQuiz(false);
+                    return;
+                }
+                // Move to next unanswered or just next
+                if (currentIndex < questions.length - 1) {
+                    currentIndex++;
+                    renderQuiz();
+                } else {
+                    // Wrap to first unanswered
+                    const firstUnanswered = questionStates.findIndex(s => !s.checked);
+                    if (firstUnanswered >= 0) {
+                        currentIndex = firstUnanswered;
+                        renderQuiz();
+                    } else {
+                        finishQuiz(false);
+                    }
+                }
+            }
+
+            function onPrev() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    renderQuiz();
+                }
+            }
+
+            function finishQuiz(timeUp) {
+                quizActive = false;
+                quizFinished = true;
+                stopTimer();
+                stopSpeech();
+
+                const totalQuestions = questions.length;
+                const answeredCount = questionStates.filter(s => s.checked).length;
+                const correctCount = questionStates.filter(s => s.checked && s.isCorrect).length;
+                const elapsed = getElapsedTime();
+
+                $timerBar.classList.add('hidden');
+                $quizScreen.classList.add('hidden');
+                $startScreen.classList.add('hidden');
+                $resultScreen.classList.remove('hidden');
+
+                $resultScore.textContent = correctCount + ' / ' + totalQuestions;
+                if (timeUp && answeredCount < totalQuestions) {
+                    $resultDetail.textContent = `Time's up! You answered ${answeredCount} of ${totalQuestions} questions.`;
+                } else {
+                    $resultDetail.textContent = correctCount >= 8 ?
+                        'Excellent work! 🎉' :
+                        correctCount >= 5 ?
+                        'Good effort! Keep practicing. 👍' :
+                        'Keep studying the rules and try again! 📚';
+                }
+                $resultTime.textContent = 'Time taken: ' + formatTime(elapsed);
+                if (timeUp && timeLeft <= 0) {
+                    $resultTime.textContent = 'Time expired · ' + formatTime(elapsed) + ' elapsed';
+                }
+                $progressDots.innerHTML = '';
+                $progressText.textContent = '';
+                $feedbackBox.className = 'feedback';
+                $feedbackBox.classList.remove('show', 'correct', 'incorrect');
+                $feedbackBox.textContent = '';
+            }
+
+            function restartQuiz() {
+                stopTimer();
+                stopSpeech();
+                initQuiz();
+                timeLeft = TOTAL_TIME;
+                updateTimerDisplay();
+                $timerBar.classList.remove('hidden', 'warning', 'danger');
+                $resultScreen.classList.add('hidden');
+                $startScreen.classList.add('hidden');
+                $quizScreen.classList.remove('hidden');
+                currentIndex = 0;
+                quizActive = true;
+                quizFinished = false;
+                renderQuiz();
+                startTimer();
+            }
+
+            // ──────────────────────────────────────
+            // Event Listeners
+            // ──────────────────────────────────────
+            $btnStart.addEventListener('click', () => {
+                initQuiz();
+                renderQuiz();
+                startTimer();
+                // Collapse rules on mobile for cleaner view
+                if (window.innerWidth < 500) {
+                    $rulesSection.classList.remove('open');
+                }
+            });
+
+            $btnRestart.addEventListener('click', restartQuiz);
+
+            $btnCheck.addEventListener('click', onCheck);
+            $btnNext.addEventListener('click', onNext);
+
+            $btnListen.addEventListener('click', () => {
+                if (!quizActive || quizFinished) return;
+                const question = getCurrentQuestion();
+                stopSpeech();
+                // Small delay to ensure cancel is processed
+                setTimeout(() => {
+                    speakSentence(question.audioText);
+                }, 80);
+            });
+
+            // Rules toggle
+            $rulesToggle.addEventListener('click', () => {
+                $rulesSection.classList.toggle('open');
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!quizActive || quizFinished) return;
+                if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    const state = getCurrentState();
+                    if (state && state.checked) {
+                        onNext();
+                    }
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    onPrev();
+                }
+            });
+
+            // Stop speech when leaving page or interacting elsewhere
+            window.addEventListener('beforeunload', stopSpeech);
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) stopSpeech();
+            });
+
+            // ──────────────────────────────────────
+            // Initialization
+            // ──────────────────────────────────────
+            function init() {
+                initSpeech();
+                updateTimerDisplay();
+                $timerBar.classList.add('hidden');
+                $quizScreen.classList.add('hidden');
+                $resultScreen.classList.add('hidden');
+                $startScreen.classList.remove('hidden');
+                $rulesSection.classList.add('open');
+                $progressDots.innerHTML = '';
+                $progressText.textContent = '';
+                quizActive = false;
+                quizFinished = false;
+            }
+
+            init();
+
+            // Handle resize for rules auto-collapse
+            window.addEventListener('resize', () => {
+                if (window.innerWidth < 500 && !quizActive && !quizFinished) {
+                    // Keep rules open on start screen even on mobile
+                }
+            });
+
+            console.log('✅ First vs Second Conditional Quiz ready!');
+            console.log('📋 10 questions · 5-minute timer · Keyboard arrows supported · Speech synthesis available');
+        })();
+    </script>
+</body>
+</html>
